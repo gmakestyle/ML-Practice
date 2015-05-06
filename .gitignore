@@ -58,3 +58,6 @@ target/
 
 # Coursera token
 *token.mat
+
+#MATLAB Autosave
+*.asv
