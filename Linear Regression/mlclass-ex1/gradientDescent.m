@@ -16,17 +16,17 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-
-    newTheta = zeros(length(theta), 1);
-    for j = 1:length(theta)
-        lFactor = alpha/m;
-        summand = (theta(1, 1)*X(:, 1) + theta(2, 1)*X(:, 2) - y).*X(:, 1);
-        test = theta(j) - lFactor*sum(summand);
-        newTheta(j) = test;
-    end
-    theta = newTheta;
-
-
+    
+    step = alpha/m;
+    %compute h(theta)
+    hypothesis=theta(2).*X(:, 2)+theta(1);
+    %compute new theta_i values
+    newTheta1=theta(1) - step*sum(hypothesis-y);
+    newTheta2=theta(2) - step*sum((hypothesis-y).*X(:, 2));
+    
+    %simultaneous update
+    theta(1)=newTheta1;
+    theta(2)=newTheta2;
 
     % ============================================================
 
